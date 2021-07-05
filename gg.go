@@ -129,13 +129,13 @@ func main() {
 			stack[l-1], stack[l-2] = stack[l-2], stack[l-1]
 		case "p": // print the stack
 			break
-		default:
-			// Duplicate the last element
-			if len(input) == 0 && len(stack) >= 1 {
-				stack = append(stack, stack[len(stack)-1])
-				fmt.Println(stack)
+		case "": // Duplicate the last element
+			if err := checkNumberOfParams(&stack, 1); err != nil {
+				fmt.Println(err)
 				continue
 			}
+			stack = append(stack, stack[len(stack)-1])
+		default:
 			value, err := strconv.ParseFloat(input, 64)
 			if err != nil {
 				fmt.Println("Invalid input")
