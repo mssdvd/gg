@@ -1,5 +1,5 @@
 /* TODO
-   - Swap elements
+   - No need to press enter after an operand
    - Delete elements
    - Edit elements
    - Add more math functions
@@ -114,7 +114,7 @@ func main() {
 				fmt.Println(err)
 				continue
 			}
-		case "n": // negate the last element
+		case "n": // Negate the last element
 			if err := checkNumberOfParams(&stack, 1); err != nil {
 				fmt.Println(err)
 				continue
@@ -127,7 +127,7 @@ func main() {
 			}
 			l := len(stack)
 			stack[l-1], stack[l-2] = stack[l-2], stack[l-1]
-		case "p": // print the stack
+		case "p": // Print the stack
 			break
 		case "": // Duplicate the last element
 			if err := checkNumberOfParams(&stack, 1); err != nil {
@@ -135,7 +135,7 @@ func main() {
 				continue
 			}
 			stack = append(stack, stack[len(stack)-1])
-		default:
+		default: // Add the new element to the stack
 			value, err := strconv.ParseFloat(input, 64)
 			if err != nil {
 				fmt.Println("Invalid input")
